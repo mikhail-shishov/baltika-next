@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: 'Next.js',
     images: [
       {
-        url: 'https://vocal-travesseiro-ed395b.netlify.app/api/og',
+        url: 'https://baltika-next.netlify.app/api/og',
       },
     ],
     locale: 'en_US',
