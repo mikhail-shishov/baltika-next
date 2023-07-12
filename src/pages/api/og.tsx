@@ -17,9 +17,10 @@ export default function () {
           textAlign: 'center',
           alignItems: 'center',
           justifyContent: 'center',
+          color: 'red'
         }}
       >
-        Hello world!
+        Hello, Baltika!
       </div>
     ),
     {
