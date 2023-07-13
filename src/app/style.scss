@@ -99,13 +99,17 @@ body {
   }
 }
 
-.share__button.is-active + .share__container {
-  display: flex;
-  top: 65px;
-  opacity: 1;
-  z-index: 1;
-  @media (max-width: 576px) {
-    top: 55px;
+.share__button.is-active {
+  background-color: #C6B1FF;
+
+  + .share__container {
+    display: flex;
+    top: 65px;
+    opacity: 1;
+    z-index: 1;
+    @media (max-width: 576px) {
+      top: 55px;
+    }
   }
 }
 
