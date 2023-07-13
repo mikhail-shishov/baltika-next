@@ -47,10 +47,10 @@ body {
   border: 0;
   line-height: 1;
   cursor: pointer;
-  transition: opacity 0.3s;
+  transition: background-color 0.3s;
 
   &:hover {
-    opacity: 0.9;
+    background-color: #FF2929;
   }
 
   @media (max-width: 576px) {
@@ -164,7 +164,7 @@ body {
     align-items: center;
     font-size: 34px;
     cursor: pointer;
-    transition: opacity 0.3s;
+    transition: background-color 0.3s;
     font-weight: 500;
 
     &--img {
@@ -188,7 +188,7 @@ body {
     }
 
     &:hover {
-      opacity: 0.9;
+      background-color: #3900DC;
     }
 
     @media (max-width: 768px) {
