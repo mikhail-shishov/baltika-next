@@ -22,7 +22,8 @@ export default function () {
         <span>🖐🏻<br/>сегодня нам нужно<br/>собраться потому что</span>
         <span style={{
           fontSize: 128,
-          fontWeight: '700'
+          fontWeight: '700',
+          marginTop: 'auto'
         }}>день летнего солнцестояния</span>
       </div>
     ),
