@@ -13,6 +13,10 @@ function newIdea() {
   setTimeout(() => {
     let randomNumber = Math.floor(Math.random() * ideas.length);
     document.querySelector('.form__input').value = ideas[randomNumber];
+
+    let here = new URL(window.location.href);
+    console.log(here);
+    here.searchParams.append('idea', document.querySelector('.form__input').value);
   }, '1000');
 }
 

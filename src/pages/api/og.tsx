@@ -9,23 +9,26 @@ export default function () {
     (
       <div
         style={{
-          fontSize: 128,
-          background: 'white',
+          fontSize: 60,
+          fontFamily: 'Inter, sans-serif',
           width: '100%',
           height: '100%',
           display: 'flex',
-          textAlign: 'center',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'red'
+          color: 'white',
+          padding: '28px 33px 55px',
+          background: 'linear-gradient(360deg, #237BFF 0%, #1721FF 38.02%, #FF4E4E 100%)'
         }}
       >
-        Hello, Baltika!
+        <span>🖐🏻<br/>сегодня нам нужно<br/>собраться потому что</span>
+        <span style={{
+          fontSize: 128,
+          fontWeight: '700'
+        }}>день летнего солнцестояния</span>
       </div>
     ),
     {
       width: 1200,
-      height: 600,
+      height: 623,
     },
   );
 }
