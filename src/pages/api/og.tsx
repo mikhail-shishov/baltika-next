@@ -6,79 +6,82 @@ export const config = {
 };
 
 export default async function handler(request: NextRequest) {
+  try {
+    const fontData = await fetch(new URL('/fonts/INTER.ttf', import.meta.url)).then((res) => res.arrayBuffer());
 
-  const fontData = await fetch(
-    new URL('/fonts/INTER.ttf', import.meta.url),
-  ).then((res) => res.arrayBuffer());
+    const { searchParams } = new URL(request.url);
 
-  const { searchParams } = new URL(request.url);
- 
     // ?title=<title>
     const hasTitle = searchParams.has('idea');
-    const title = hasTitle
-      ? searchParams.get('idea')?.slice(0, 100)
-      : 'день летнего солнцестояния';
+    const title = hasTitle ? searchParams.get('idea')?.slice(0, 100) : 'день летнего солнцестояния';
 
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          fontSize: 60,
-          fontFamily: '"Inter"',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          color: 'white',
-          padding: '0 33px 55px',
-          background: 'linear-gradient(360deg, #237BFF 0%, #1721FF 38.02%, #FF4E4E 100%)',
-        }}>
-        <p
+    return new ImageResponse(
+      (
+        <div
           style={{
-            maxWidth: '700px',
+            fontSize: 60,
+            fontFamily: '"Inter"',
+            width: '100%',
+            height: '100%',
             display: 'flex',
             flexDirection: 'column',
-            lineHeight: 1
+            color: 'white',
+            padding: '0 55px 55px',
+            background: 'linear-gradient(360deg, #237BFF 0%, #1721FF 38.02%, #FF4E4E 100%)',
           }}>
-          <span
+          <p
             style={{
-              display: 'block',
-            }}>🖐🏻 
-          </span>
-          <span
-            style={{
-              display: 'block',
+              maxWidth: '700px',
+              display: 'flex',
+              flexDirection: 'column',
+              lineHeight: 1,
             }}>
-            сегодня нам нужно
-          </span>
-          <span
+            <span
+              style={{
+                display: 'block',
+              }}>
+              🖐🏻
+            </span>
+            <span
+              style={{
+                display: 'block',
+              }}>
+              сегодня нам нужно
+            </span>
+            <span
+              style={{
+                display: 'block',
+              }}>
+              собраться потому что
+            </span>
+          </p>
+          <p
             style={{
-              display: 'block',
+              fontSize: 128,
+              fontWeight: 'bold',
+              marginTop: 'auto',
+              lineHeight: 1,
             }}>
-            собраться потому что
-          </span>
-        </p>
-        <p
-          style={{
-            fontSize: 128,
-            fontWeight: 'bold',
-            marginTop: 'auto',
-            lineHeight: 1
-          }}>
-          {title}
-        </p>
-      </div>
-    ),
-    {
-      width: 1200,
-      height: 623,
-      fonts: [
-        {
-          name: 'Inter',
-          data: fontData,
-          style: 'normal',
-        },
-      ]
-    }
-  );
+            {title}
+          </p>
+        </div>
+      ),
+      {
+        width: 1200,
+        height: 623,
+        fonts: [
+          {
+            name: 'Inter',
+            data: fontData,
+            style: 'normal',
+          },
+        ],
+      }
+    );
+  } catch (e: any) {
+    console.log(`${e.message}`);
+    return new Response(`Failed to generate the image`, {
+      status: 500,
+    });
+  }
 }
