@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styles from './page.module.css'
-import { Helmet } from "react-helmet";
+import Script from 'next/script'
 
 export default function Home() {
   return (
@@ -19,10 +19,7 @@ export default function Home() {
       </div>
     </form>
     <img src="img/sign.svg" className="sign" alt="Чрезмерное употребление..." />
-    <script src='js/scripts.js'></script>
-    {/* <Helmet>
-        <script src="js/scripts.js" />
-    </Helmet> */}
+    <Script src='js/scripts.js'></Script>
   </main>
   )
 
