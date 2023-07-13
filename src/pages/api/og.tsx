@@ -1,14 +1,23 @@
 import { ImageResponse } from '@vercel/og';
+import { NextRequest } from 'next/server';
 
 export const config = {
   runtime: 'edge',
 };
 
-export default async function handler() {
+export default async function handler(request: NextRequest) {
 
   const fontData = await fetch(
     new URL('/fonts/INTER.ttf', import.meta.url),
   ).then((res) => res.arrayBuffer());
+
+  const { searchParams } = new URL(request.url);
+ 
+    // ?title=<title>
+    const hasTitle = searchParams.has('idea');
+    const title = hasTitle
+      ? searchParams.get('idea')?.slice(0, 100)
+      : 'день летнего солнцестояния';
 
   return new ImageResponse(
     (
@@ -56,7 +65,7 @@ export default async function handler() {
             marginTop: 'auto',
             lineHeight: 1
           }}>
-          день летнего солнцестояния
+          {title}
         </p>
       </div>
     ),

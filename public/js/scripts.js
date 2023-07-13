@@ -14,9 +14,21 @@ function newIdea() {
     let randomNumber = Math.floor(Math.random() * ideas.length);
     document.querySelector('.form__input').value = ideas[randomNumber];
 
-    let here = new URL(window.location.href);
-    console.log(here);
-    here.searchParams.append('idea', document.querySelector('.form__input').value);
+    // let here = new URL(window.location.href);
+    // console.log(here);
+    // here.searchParams.append('idea', document.querySelector('.form__input').value);
+    // here.searchParams.set('idea', document.querySelector('.form__input').value);
+
+    // const urlParams = new URLSearchParams(window.location.search);
+    // urlParams.set('idea', document.querySelector('.form__input').value);
+    // window.location.search = urlParams;
+
+    // ставим и забираем параметр из урла
+    const url = new URL(window.location.href);
+    url.searchParams.set('idea', document.querySelector('.form__input').value);
+    url.searchParams.delete('param2');
+    window.history.replaceState(null, null, url); // or pushState
+    console.log(decodeURIComponent(window.location.search.match(/(\?|&)idea\=([^&]*)/)[2]))
   }, '1000');
 }
 
@@ -33,8 +45,8 @@ setTimeout(() => {
 }, '1500');
 
 setTimeout(() => {
-    newIdea();
-    loader();
+  newIdea();
+  loader();
 }, '1400');
 
 // share
@@ -46,5 +58,5 @@ shareBtn.addEventListener('click', () => {
 
 document.querySelector('.copy__link').addEventListener('click', () => {
   navigator.clipboard.writeText(window.location.href);
-  alert("Ссылка скопирована!");
-})
+  alert('Ссылка скопирована!');
+});
