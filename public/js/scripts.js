@@ -32,3 +32,11 @@ setTimeout(() => {
     newIdea();
     loader();
 }, '1400');
+
+// share
+const shareBtn = document.querySelector('.share__button');
+console.log("ok");
+
+shareBtn.addEventListener('click', () => {
+  shareBtn.classList.toggle('is-active');
+});

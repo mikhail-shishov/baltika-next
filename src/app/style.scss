@@ -42,7 +42,7 @@ body {
   font-weight: 500;
   letter-spacing: -2px;
   background: #3900dc;
-  padding: 9px 32px;
+  padding: 9px 62px;
   border-radius: 50px;
   border: 0;
   line-height: 1;
@@ -50,19 +50,57 @@ body {
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #FF2929;
+    background-color: #ff2929;
   }
 
   @media (max-width: 576px) {
-    position: absolute;
-    bottom: 100px;
-    left: 50%;
-    transform: translateX(-50%);
     font-size: 48px;
   }
 
-  @media (max-width: 360px) {
+  @media (max-width: 420px) {
     font-size: 32px;
+  }
+}
+
+.share {
+  &__container {
+    opacity: 0;
+    border-radius: 100px;
+    background: #3900dc;
+    padding: 10px 30px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    transition: top 0.3s;
+    z-index: -1;
+  }
+  &__box {
+    position: relative;
+    @media (max-width: 576px) {
+      position: absolute;
+      bottom: 140px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  &__link {
+    transition: opacity 0.3s;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.share__button.is-active + .share__container {
+  display: flex;
+  top: 65px;
+  opacity: 1;
+  z-index: 1;
+  @media (max-width: 576px) {
+    top: 55px;
   }
 }
 
@@ -86,7 +124,7 @@ body {
   transform: translate(-50%, -50%);
   opacity: 0;
   cursor: default;
-  transition: opacity .5s, top .3s;
+  transition: opacity 0.5s, top 0.3s;
 
   &.is-active {
     opacity: 1;
@@ -96,10 +134,10 @@ body {
 
   &.is-loading {
     .form__button--text {
-        display: none;
+      display: none;
     }
     .form__button--img {
-        display: block;
+      display: block;
     }
   }
 
@@ -142,7 +180,7 @@ body {
     font-size: 28px;
     letter-spacing: -1px;
     text-align: center;
-    color: #2C2C2C;
+    color: #2c2c2c;
     font-weight: 500;
 
     @media (max-width: 768px) {
@@ -168,27 +206,27 @@ body {
     font-weight: 500;
 
     &--img {
-        display: none;
-        animation: rotate 2s infinite linear;
+      display: none;
+      animation: rotate 2s infinite linear;
     }
 
     &--text {
-        line-height: 1;
-        margin-top: -3px;
-        letter-spacing: -2px;
+      line-height: 1;
+      margin-top: -3px;
+      letter-spacing: -2px;
     }
 
     @keyframes rotate {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     &:hover {
-      background-color: #3900DC;
+      background-color: #3900dc;
     }
 
     @media (max-width: 768px) {

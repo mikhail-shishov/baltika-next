@@ -6,8 +6,17 @@ export default function Home() {
   return (
     <main className="wrap">
     <header className="header">
-      <img src="img/logo.svg" className="logo" alt="" />
-      <button className="button">поделиться</button>
+      <img src="img/logo.svg" className="logo" alt="Балтика" />
+      <div className="share__box">
+        <button className="button share__button">поделиться</button>
+        <div className="share__container">
+          <a href="" className="share__link"><img src="img/link.svg" alt="" /></a>
+          <a href="" className="share__link"><img src="img/tg.svg" alt="" /></a>
+          <a href="" className="share__link"><img src="img/vk.svg" alt="" /></a>
+          <a href="" className="share__link"><img src="img/twitter.svg" alt="" /></a>
+          <a href="" className="share__link"><img src="img/ok.svg" alt="" /></a>
+        </div>
+      </div>
     </header>
     <form action="" className="form">
       <div className="form__line">
