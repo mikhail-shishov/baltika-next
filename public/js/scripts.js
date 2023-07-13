@@ -35,8 +35,12 @@ setTimeout(() => {
 
 // share
 const shareBtn = document.querySelector('.share__button');
-console.log("ok");
 
 shareBtn.addEventListener('click', () => {
   shareBtn.classList.toggle('is-active');
 });
+
+document.querySelector('.copy__link').addEventListener('click', () => {
+  navigator.clipboard.writeText(window.location.href);
+  alert("Ссылка скопирована!");
+})

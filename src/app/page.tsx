@@ -1,39 +1,53 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-import Script from 'next/script'
+import Image from 'next/image';
+import styles from './page.module.css';
+import Script from 'next/script';
 
 export default function Home() {
   return (
     <main className="wrap">
-    <header className="header">
-      <img src="img/logo.svg" className="logo" alt="Балтика" />
-      <div className="share__box">
-        <button className="button share__button">поделиться</button>
-        <div className="share__container">
-          <a href="" className="share__link"><img src="img/link.svg" alt="" /></a>
-          <a href="" className="share__link"><img src="img/tg.svg" alt="" /></a>
-          <a href="" className="share__link"><img src="img/vk.svg" alt="" /></a>
-          <a href="" className="share__link"><img src="img/twitter.svg" alt="" /></a>
-          <a href="" className="share__link"><img src="img/ok.svg" alt="" /></a>
+      <header className="header">
+        <img src="img/logo.svg" className="logo" alt="Балтика" />
+        <div className="share__box">
+          <button className="button share__button">поделиться</button>
+          <div className="share__container">
+            <button className="share__link copy__link">
+              <img src="img/link.svg" alt="" />
+            </button>
+            <a href="https://t.me/share/url?url={url}&text={text}" target="_blank" rel="nofollow noopener" className="share__link">
+              <img src="img/tg.svg" alt="" />
+            </a>
+            <a href="https://vk.com/share.php?url=http://mysite.com" target="_blank" rel="nofollow noopener" className="share__link">
+              <img src="img/vk.svg" alt="" />
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=<?=urlencode($url)?>" target="_blank" rel="nofollow noopener" className="share__link">
+              <img src="img/twitter.svg" alt="" />
+            </a>
+            <a href="https://connect.ok.ru/offer?url=http://mysite.com" target="_blank" rel="nofollow noopener" className="share__link">
+              <img src="img/ok.svg" alt="" />
+            </a>
+          </div>
         </div>
-      </div>
-    </header>
-    <form action="" className="form">
-      <div className="form__line">
-        <div className="form__line--main">
-          <h1 className="form__heading">Идеи для летних встреч</h1>
-          <input type="text" className="form__input" disabled />
+      </header>
+      <form action="" className="form">
+        <div className="form__line">
+          <div className="form__line--main">
+            {/* <h1 className="form__heading">Идеи для летних встреч</h1> */}
+            <img src="img/outline.png" className='form__name' alt="Идеи для летних встреч" />
+            <input type="text" className="form__input" disabled />
+          </div>
+          <button type="submit" className="form__button">
+            <span className="form__button--text">ещё</span>
+            <img src="img/anim.svg" className="form__button--img" alt="Анимация загрузки" />
+          </button>
         </div>
-        <button type="submit" className="form__button"><span className="form__button--text">ещё</span><img src="img/anim.svg" className="form__button--img" alt="Анимация загрузки"/></button>
-      </div>
-    </form>
-    <img src="img/sign.svg" className="sign" alt="Чрезмерное употребление..." />
-    <Script src='js/scripts.js'></Script>
-  </main>
-  )
+      </form>
+      <img src="img/sign.svg" className="sign" alt="Чрезмерное употребление..." />
+      <Script src="js/scripts.js"></Script>
+    </main>
+  );
 
-
-  {/* <main className={styles.main}>
+  {
+    /* <main className={styles.main}>
     <div className={styles.description}>
       <p>
         Get started by editing&nbsp;
@@ -120,5 +134,6 @@ export default function Home() {
         </p>
       </a>
     </div>
-  </main> */}
+  </main> */
+  }
 }

@@ -88,8 +88,13 @@ body {
   }
   &__link {
     transition: opacity 0.3s;
+    background-color: transparent;
+    border: 0;
     &:hover {
       opacity: 0.8;
+    }
+    &:active {
+      opacity: 1;
     }
   }
 }
@@ -125,6 +130,15 @@ body {
   opacity: 0;
   cursor: default;
   transition: opacity 0.5s, top 0.3s;
+
+  &__name {
+    max-width: 300px;
+    margin-bottom: -10px;
+
+    @media (max-width: 370px) {
+      max-width: 80%;
+    }
+  }
 
   &.is-active {
     opacity: 1;
