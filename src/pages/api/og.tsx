@@ -61,7 +61,7 @@ export default async function handler(request: NextRequest) {
           }}>
           <p
             style={{
-              maxWidth: '700px',
+              maxWidth: '800px',
               display: 'flex',
               flexDirection: 'column',
               lineHeight: 1,
