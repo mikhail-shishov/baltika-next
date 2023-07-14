@@ -10,7 +10,7 @@ async function getIdea() {
   requestHeaders.set('X-Requested-With', 'XMLHttpRequest');
 
 
-  const res = await fetch('http://api.bybaltika.by/api/idea', {
+  const res = await fetch('https://api.bybaltika.by/api/idea', {
     method: 'GET',
     headers: requestHeaders,
     cache: 'no-store'
