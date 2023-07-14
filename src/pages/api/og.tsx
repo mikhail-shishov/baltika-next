@@ -6,13 +6,17 @@ export const config = {
 };
 
 async function getIdea() {
-  const options = {
-    method: 'GET',
-    headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest'},
-    cache: 'no-store'
-  };
 
-  const res = await fetch('http://api.bybaltika.by/api/idea', options);
+  const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set('Content-Type', 'application/json');
+  requestHeaders.set('X-Requested-With', 'XMLHttpRequest');
+
+
+  const res = await fetch('http://api.bybaltika.by/api/idea', {
+    method: 'GET',
+    headers: requestHeaders,
+    cache: 'no-store'
+  });
   return res.json();
 }
 
@@ -22,8 +26,9 @@ export default async function handler(request: NextRequest) {
 
     const { searchParams } = new URL(request.url);
 
-
     let idea = await getIdea();
+
+
     // const options = {
     //   method: 'GET',
     //   headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest'}
@@ -37,8 +42,8 @@ export default async function handler(request: NextRequest) {
 
       
     // ?title=<title>
-    const hasTitle = searchParams.has('idea');
-    const title = hasTitle ? searchParams.get('idea')?.slice(0, 100) : 'день летнего солнцестояния';
+    // const hasTitle = searchParams.has('idea');
+    // const title = hasTitle ? searchParams.get('idea')?.slice(0, 100) : 'день летнего солнцестояния';
 
     return new ImageResponse(
       (
@@ -77,7 +82,7 @@ export default async function handler(request: NextRequest) {
               style={{
                 display: 'block',
               }}>
-              {idea.text}
+              собраться потому что
             </span>
           </p>
           <p
@@ -87,7 +92,7 @@ export default async function handler(request: NextRequest) {
               marginTop: 'auto',
               lineHeight: 1,
             }}>
-            {title}
+            {idea.text}
           </p>
         </div>
       ),
