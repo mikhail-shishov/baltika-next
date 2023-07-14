@@ -14,7 +14,7 @@ async function getIdea() {
     cache: 'no-store'
   };
 
-  const res = await fetch('http://api.bybaltika.by/api/idea', options);
+  const res = await fetch('https://api.bybaltika.by/api/idea', options);
   return res.json();
 }
 
