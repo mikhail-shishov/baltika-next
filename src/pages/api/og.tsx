@@ -34,7 +34,7 @@ export default async function handler(request: NextRequest) {
           }}>
           <p
             style={{
-              maxWidth: '700px',
+              maxWidth: '1100px',
               display: 'flex',
               flexDirection: 'column',
               lineHeight: 1,
@@ -49,13 +49,7 @@ export default async function handler(request: NextRequest) {
               style={{
                 display: 'block',
               }}>
-              сегодня нам нужно
-            </span>
-            <span
-              style={{
-                display: 'block',
-              }}>
-              {idea}
+              сегодня нам нужно провести
             </span>
           </p>
           <p
