@@ -4,13 +4,17 @@ import Script from 'next/script';
 
 
 async function getIdea() {
-  const options = {
-    method: 'GET',
-    headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest'},
-    cache: 'no-store'
-  };
 
-  const res = await fetch('http://api.bybaltika.by/api/idea', options);
+  const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set('Content-Type', 'application/json');
+  requestHeaders.set('X-Requested-With', 'XMLHttpRequest');
+
+
+  const res = await fetch('http://api.bybaltika.by/api/idea', {
+    method: 'GET',
+    headers: requestHeaders,
+    cache: 'no-store'
+  });
   return res.json();
 }
 
