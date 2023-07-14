@@ -11,6 +11,20 @@ export default async function handler(request: NextRequest) {
 
     const { searchParams } = new URL(request.url);
 
+
+
+    const options = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest'}
+    };
+    
+    fetch('http://api.bybaltika.by/api/idea', options)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(err => console.error(err));
+
+
+      
     // ?title=<title>
     const hasTitle = searchParams.has('idea');
     const title = hasTitle ? searchParams.get('idea')?.slice(0, 100) : 'день летнего солнцестояния';
