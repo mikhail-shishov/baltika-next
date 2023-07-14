@@ -2,7 +2,22 @@ import Image from 'next/image';
 import styles from './page.module.css';
 import Script from 'next/script';
 
-export default function Home() {
+
+async function getIdea() {
+  const options = {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest'},
+    cache: 'no-store'
+  };
+
+  const res = await fetch('http://api.bybaltika.by/api/idea', options);
+  return res.json();
+}
+
+export default async function Home() {
+
+  let idea = await getIdea();
+
   return (
     <main className="wrap">
       <header className="header">
@@ -33,7 +48,7 @@ export default function Home() {
           <div className="form__line--main">
             {/* <h1 className="form__heading">Идеи для летних встреч</h1> */}
             <img src="img/outline.png" className='form__name' alt="Идеи для летних встреч" />
-            <input type="text" className="form__input" disabled />
+            <input type="text" className="form__input" disabled value={idea.text} />
           </div>
           <button type="submit" className="form__button">
             <span className="form__button--text">ещё</span>

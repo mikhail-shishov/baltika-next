@@ -1,5 +1,3 @@
-let ideas = ['День летнего солнцестояния', 'пример 1', 'пример 2', 'пример 3', 'пример 4', 'пример 5'];
-
 // колесо загрузки
 function loader() {
   document.querySelector('.form').classList.add('is-loading');
@@ -8,35 +6,25 @@ function loader() {
   }, '1000');
 }
 
-// выборка из массива
-function newIdea() {
-  setTimeout(() => {
-    let randomNumber = Math.floor(Math.random() * ideas.length);
-    document.querySelector('.form__input').value = ideas[randomNumber];
 
-    // let here = new URL(window.location.href);
-    // console.log(here);
-    // here.searchParams.append('idea', document.querySelector('.form__input').value);
-    // here.searchParams.set('idea', document.querySelector('.form__input').value);
+async function getIdea() {
+  const options = {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest'},
+    cache: 'no-store'
+  };
 
-    // const urlParams = new URLSearchParams(window.location.search);
-    // urlParams.set('idea', document.querySelector('.form__input').value);
-    // window.location.search = urlParams;
-
-    // ставим и забираем параметр из урла
-    const url = new URL(window.location.href);
-    url.searchParams.set('idea', document.querySelector('.form__input').value);
-    url.searchParams.delete('param2');
-    window.history.replaceState(null, null, url); // or pushState
-    console.log(decodeURIComponent(window.location.search.match(/(\?|&)idea\=([^&]*)/)[2]))
-  }, '1000');
+  const res = await fetch('http://api.bybaltika.by/api/idea', options);
+  return res.json();
 }
 
 // клик по кнопке "еще"
-document.querySelector('.form__button').addEventListener('click', (e) => {
+document.querySelector('.form__button').addEventListener('click', async (e) => {
   e.preventDefault();
   loader();
-  newIdea();
+  const idea = await getIdea();
+
+  document.querySelector('.form__input').value = idea.text;
 });
 
 // fadein для блока при загрузке страницы
@@ -44,10 +32,6 @@ setTimeout(() => {
   document.querySelector('.form').classList.add('is-active');
 }, '1500');
 
-setTimeout(() => {
-  newIdea();
-  loader();
-}, '1400');
 
 // share
 const shareBtn = document.querySelector('.share__button');
