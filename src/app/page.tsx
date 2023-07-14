@@ -2,6 +2,21 @@ import Image from 'next/image';
 import styles from './page.module.css';
 import Script from 'next/script';
 
+import { Metadata } from 'next'
+
+
+let idea = await getIdea();
+
+export const metadata: Metadata = {
+  openGraph: {
+    images: [
+      {
+        url: 'https://baltika-next.netlify.app/api/og?idea=' + idea.text,
+      },
+    ],
+  },
+}
+
 
 async function getIdea() {
 
@@ -10,7 +25,7 @@ async function getIdea() {
   requestHeaders.set('X-Requested-With', 'XMLHttpRequest');
 
 
-  const res = await fetch('http://api.bybaltika.by/api/idea', {
+  const res = await fetch('https://api.bybaltika.by/api/idea', {
     method: 'GET',
     headers: requestHeaders,
     cache: 'no-store'
@@ -19,8 +34,6 @@ async function getIdea() {
 }
 
 export default async function Home() {
-
-  let idea = await getIdea();
 
   return (
     <main className="wrap">

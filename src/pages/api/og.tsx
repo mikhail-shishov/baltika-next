@@ -5,34 +5,12 @@ export const config = {
   runtime: 'edge',
 };
 
-async function getIdea() {
-  const options = {
-    method: 'GET',
-    headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest'},
-    cache: 'no-store'
-  };
-
-  const res = await fetch('http://api.bybaltika.by/api/idea', options);
-  return res.json();
-}
 
 export default async function handler(request: NextRequest) {
   try {
     const fontData = await fetch(new URL('/fonts/INTER.ttf', import.meta.url)).then((res) => res.arrayBuffer());
 
     const { searchParams } = new URL(request.url);
-
-
-    let idea = await getIdea();
-    // const options = {
-    //   method: 'GET',
-    //   headers: {'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest'}
-    // };
-    
-    // fetch('http://api.bybaltika.by/api/idea', options)
-    //   .then(response => response.json())
-    //   .then(response => console.log(response))
-    //   .catch(err => console.error(err));
 
 
       
@@ -77,7 +55,7 @@ export default async function handler(request: NextRequest) {
               style={{
                 display: 'block',
               }}>
-              {idea.text}
+              {idea}
             </span>
           </p>
           <p
