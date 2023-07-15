@@ -12,9 +12,8 @@ type Props = {
 
 export async function generateMetadata(
     { searchParams  }: Props,
-    parent?: ResolvingMetadata
 ): Promise<Metadata> {
-  let idea = await getIdea(searchParams.id);
+  let idea = await getIdea(searchParams.id as string || "");
 
   return {
     title: idea.text,
@@ -29,9 +28,10 @@ export async function generateMetadata(
 }
 
 
-const getIdea = cache(async (ID) => {
+const getIdea = cache(async (ID:string) => {
+  console.log('ID', ID);
   let url = 'https://api.bybaltika.by/api/idea';
-  if (ID !== undefined) {
+  if (ID !== '') {
     url += '/' + ID;
   }
   console.log('url', url);
@@ -50,7 +50,7 @@ const getIdea = cache(async (ID) => {
 
 export default async function Home({ searchParams  }: Props) {
 
-  let idea = await getIdea(searchParams.id);
+  let idea = await getIdea(searchParams.id as string || "");
 
   return (
     <main className="wrap">
