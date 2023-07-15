@@ -1,3 +1,11 @@
+// подстановка ссылок в расшаривание
+function link() {
+  document.querySelector('.share__link--tg').href = 'https://t.me/share/url?url=' + window.location.href + '&text=' + document.title;
+  document.querySelector('.share__link--vk').href = 'https://vk.com/share.php?url=' + window.location.href;
+  document.querySelector('.share__link--twitter').href = 'https://twitter.com/intent/tweet?url=' + window.location.href;
+  document.querySelector('.share__link--ok').href = 'https://connect.ok.ru/offer?url=' + window.location.href;
+}
+
 // колесо загрузки
 function loader() {
   document.querySelector('.form').classList.add('is-loading');
@@ -22,6 +30,7 @@ async function getIdea() {
 document.querySelector('.form__button').addEventListener('click', async (e) => {
   e.preventDefault();
   loader();
+  link();
   const idea = await getIdea();
 
   document.querySelector('.form__input').value = idea.text;
@@ -30,6 +39,7 @@ document.querySelector('.form__button').addEventListener('click', async (e) => {
 // fadein для блока при загрузке страницы
 setTimeout(() => {
   document.querySelector('.form').classList.add('is-active');
+  link();
 }, '1500');
 
 

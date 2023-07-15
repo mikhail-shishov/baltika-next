@@ -50,16 +50,16 @@ export default async function Home() {
             <button className="share__link copy__link">
               <img src="img/link.svg" alt="" />
             </button>
-            <a href="https://t.me/share/url?url={url}&text={text}" target="_blank" rel="nofollow noopener" className="share__link">
+            <a href="https://t.me/share/url?url={url}&text={text}" target="_blank" rel="nofollow noopener" className="share__link share__link--tg">
               <img src="img/tg.svg" alt="" />
             </a>
-            <a href="https://vk.com/share.php?url=http://mysite.com" target="_blank" rel="nofollow noopener" className="share__link">
+            <a href="https://vk.com/share.php?url=http://mysite.com" target="_blank" rel="nofollow noopener" className="share__link share__link--vk">
               <img src="img/vk.svg" alt="" />
             </a>
-            <a href="https://twitter.com/intent/tweet?url=<?=urlencode($url)?>" target="_blank" rel="nofollow noopener" className="share__link">
+            <a href="https://twitter.com/intent/tweet?url=<?=urlencode($url)?>" target="_blank" rel="nofollow noopener" className="share__link share__link--twitter">
               <img src="img/twitter.svg" alt="" />
             </a>
-            <a href="https://connect.ok.ru/offer?url=http://mysite.com" target="_blank" rel="nofollow noopener" className="share__link">
+            <a href="https://connect.ok.ru/offer?url=http://mysite.com" target="_blank" rel="nofollow noopener" className="share__link share__link--ok">
               <img src="img/ok.svg" alt="" />
             </a>
           </div>
