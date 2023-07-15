@@ -2,38 +2,43 @@ import Image from 'next/image';
 import styles from './page.module.css';
 import Script from 'next/script';
 
-import { Metadata } from 'next'
+import { Metadata, ResolvingMetadata  } from 'next'
+import { cache } from 'react'
 
 
-let idea = await getIdea();
+export async function generateMetadata(): Promise<Metadata> {
+  let idea = await getIdea();
 
-export const metadata: Metadata = {
-  openGraph: {
-    images: [
-      {
-        url: 'https://baltika-next.netlify.app/api/og?idea=' + idea.text,
-      },
-    ],
-  },
+  return {
+    openGraph: {
+      images: [
+        {
+          url: 'https://baltika-next.netlify.app/api/og?idea=' + idea.text,
+        },
+      ],
+    },
+  }
 }
 
 
-async function getIdea() {
+const getIdea = cache(async () => {
 
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set('Content-Type', 'application/json');
   requestHeaders.set('X-Requested-With', 'XMLHttpRequest');
-
 
   const res = await fetch('https://api.bybaltika.by/api/idea', {
     method: 'GET',
     headers: requestHeaders,
     cache: 'no-store'
   });
+
   return res.json();
-}
+});
 
 export default async function Home() {
+
+  let idea = await getIdea();
 
   return (
     <main className="wrap">
