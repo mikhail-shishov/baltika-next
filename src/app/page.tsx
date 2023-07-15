@@ -5,9 +5,16 @@ import Script from 'next/script';
 import { Metadata, ResolvingMetadata  } from 'next'
 import { cache } from 'react'
 
+type Props = {
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 
-export async function generateMetadata(): Promise<Metadata> {
-  let idea = await getIdea();
+
+export async function generateMetadata(
+    { searchParams  }: Props,
+    parent?: ResolvingMetadata
+): Promise<Metadata> {
+  let idea = await getIdea(searchParams.id);
 
   return {
     title: idea.text,
@@ -22,13 +29,17 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 
-const getIdea = cache(async () => {
-
+const getIdea = cache(async (ID) => {
+  let url = 'https://api.bybaltika.by/api/idea';
+  if (ID !== undefined) {
+    url += '/' + ID;
+  }
+  console.log('url', url);
   const requestHeaders: HeadersInit = new Headers();
   requestHeaders.set('Content-Type', 'application/json');
   requestHeaders.set('X-Requested-With', 'XMLHttpRequest');
 
-  const res = await fetch('https://api.bybaltika.by/api/idea', {
+  const res = await fetch(url, {
     method: 'GET',
     headers: requestHeaders,
     cache: 'no-store'
@@ -37,9 +48,9 @@ const getIdea = cache(async () => {
   return res.json();
 });
 
-export default async function Home() {
+export default async function Home({ searchParams  }: Props) {
 
-  let idea = await getIdea();
+  let idea = await getIdea(searchParams.id);
 
   return (
     <main className="wrap">

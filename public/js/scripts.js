@@ -1,8 +1,8 @@
 // подстановка ссылок в расшаривание
 function link() {
   console.log(document.querySelectorAll('meta[property="og:image"]')[0]);
-  document.querySelector('.share__link--tg').href = 'https://t.me/share/url?url=' + window.location.href + '&text=' + document.title;
-  document.querySelector('.share__link--vk').href = 'https://vk.com/share.php?url=' + window.location.href + '&title=' + document.title + '&image=' + document.querySelectorAll('meta[property="og:image"]')[0].content;
+  document.querySelector('.share__link--tg').href = 'https://t.me/share/url?url=' + window.location.href;
+  document.querySelector('.share__link--vk').href = 'https://vk.com/share.php?url=' + window.location.href;
   document.querySelector('.share__link--twitter').href = 'https://twitter.com/intent/tweet?url=' + window.location.href;
   document.querySelector('.share__link--ok').href = 'https://connect.ok.ru/offer?url=' + window.location.href;
 }
@@ -31,10 +31,17 @@ async function getIdea() {
 document.querySelector('.form__button').addEventListener('click', async (e) => {
   e.preventDefault();
   loader();
-  link();
+
   const idea = await getIdea();
 
   document.querySelector('.form__input').value = idea.text;
+  document.title = idea.text;
+
+  const url = new URL(window.location.href);
+  url.searchParams.set('id', idea.id);
+  window.history.replaceState(null, null, url); // or pushState
+
+  link();
 });
 
 // fadein для блока при загрузке страницы
