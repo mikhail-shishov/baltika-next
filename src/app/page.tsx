@@ -10,6 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   let idea = await getIdea();
 
   return {
+    title: idea.text,
     openGraph: {
       images: [
         {
