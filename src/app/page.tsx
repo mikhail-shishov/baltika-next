@@ -20,7 +20,7 @@ export async function generateMetadata(
     openGraph: {
       images: [
         {
-          url: 'https://baltika-next.netlify.app/api/og?idea=' + idea.text,
+          url: 'https://baltika-next.netlify.app/api/og/' + idea.id,
         },
       ],
     },

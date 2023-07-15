@@ -5,6 +5,26 @@ export const config = {
   runtime: 'edge',
 };
 
+const getIdea = (async (ID:string) => {
+    console.log('ID', ID);
+    let url = 'https://api.bybaltika.by/api/idea';
+    if (ID !== '') {
+        url += '/' + ID;
+    }
+    console.log('url', url);
+    const requestHeaders: HeadersInit = new Headers();
+    requestHeaders.set('Content-Type', 'application/json');
+    requestHeaders.set('X-Requested-With', 'XMLHttpRequest');
+
+    const res = await fetch(url, {
+        method: 'GET',
+        headers: requestHeaders,
+        cache: 'no-store'
+    });
+
+    return res.json();
+});
+
 
 export default async function handler(request: NextRequest) {
   try {
@@ -12,11 +32,12 @@ export default async function handler(request: NextRequest) {
 
     const { searchParams } = new URL(request.url);
 
-
+     const idea = await getIdea(searchParams.get('id') as string || "");
+     const title = idea.text;
       
     // ?title=<title>
-    const hasTitle = searchParams.has('idea');
-    const title = hasTitle ? searchParams.get('idea')?.slice(0, 100) : 'день летнего солнцестояния';
+    //const hasTitle = searchParams.has('idea');
+    //const title = hasTitle ? searchParams.get('idea')?.slice(0, 100) : 'день летнего солнцестояния';
 
     return new ImageResponse(
       (
