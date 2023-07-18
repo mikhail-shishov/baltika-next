@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     siteName: 'Балтика',
     images: [
       {
-        url: 'https://baltika-next.netlify.app/api/og',
+        url: 'https://bybaltika.by/api/og',
       },
     ],
     locale: 'ru_RU',

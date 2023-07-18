@@ -2,8 +2,9 @@ import Image from 'next/image';
 import styles from './page.module.css';
 import Script from 'next/script';
 
-import { Metadata, ResolvingMetadata  } from 'next'
-import { cache } from 'react'
+import { Metadata, ResolvingMetadata  } from 'next';
+import { cache } from 'react';
+import { redirect } from 'next/navigation';
 
 type Props = {
   searchParams: { [key: string]: string | string[] | undefined }
@@ -20,7 +21,7 @@ export async function generateMetadata(
     openGraph: {
       images: [
         {
-          url: 'https://baltika-next.netlify.app/api/og/' + idea.id,
+          url: 'https://bybaltika.by/api/og/' + idea.id,
         },
       ],
     },
@@ -51,6 +52,10 @@ const getIdea = cache(async (ID:string) => {
 export default async function Home({ searchParams  }: Props) {
 
   let idea = await getIdea(searchParams.id as string || "");
+  
+  if (!searchParams.hasOwnProperty('id')) {
+    redirect('/?id=' + idea.id);
+  }
 
   return (
     <main className="wrap">

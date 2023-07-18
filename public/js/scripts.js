@@ -1,9 +1,10 @@
 // подстановка ссылок в расшаривание
 function link() {
   console.log(document.querySelectorAll('meta[property="og:image"]')[0]);
+  let text = document.querySelector('.form__input').value;
   document.querySelector('.share__link--tg').href = 'https://t.me/share/url?url=' + window.location.href;
   document.querySelector('.share__link--vk').href = 'https://vk.com/share.php?url=' + window.location.href;
-  document.querySelector('.share__link--twitter').href = 'https://twitter.com/intent/tweet?url=' + window.location.href;
+  document.querySelector('.share__link--twitter').href = 'https://twitter.com/intent/tweet?text=' + text + '&url=' + window.location.href;
   document.querySelector('.share__link--ok').href = 'https://connect.ok.ru/offer?url=' + window.location.href;
 }
 
