@@ -57,6 +57,7 @@ body {
   @media (max-width: 576px) {
     font-size: 48px;
     padding: 9px 56px;
+    width: 95vw;
   }
 
   @media (max-width: 375px) {
@@ -85,7 +86,7 @@ body {
     outline: none;
     @media (max-width: 576px) {
       position: absolute;
-      bottom: 135px;
+      bottom: 23vw;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -94,6 +95,10 @@ body {
     transition: opacity 0.3s;
     background-color: transparent;
     border: 0;
+    padding: 0;
+    flex-grow: 1;
+    text-align: center;
+    cursor: pointer;
     &:hover {
       opacity: 0.8;
     }
@@ -145,7 +150,7 @@ body {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
@@ -164,7 +169,6 @@ body {
   &.is-active {
     opacity: 1;
     cursor: unset;
-    top: 50%;
   }
 
   &.is-loading {
@@ -212,7 +216,7 @@ body {
     padding: 30px 34px;
     width: 650px;
     outline: none;
-    font-size: 28px;
+    font-size: 22px;
     letter-spacing: -1px;
     text-align: center;
     color: #2c2c2c;
@@ -225,6 +229,11 @@ body {
       width: 95vw;
       padding: 30px 10px;
       font-size: 18px;
+    }
+
+    @media (max-width: 576px) {
+      padding: 30px 5px;
+      font-size: 16px;
     }
   }
 

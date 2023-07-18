@@ -14,10 +14,19 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://bybaltika.by/api/og',
+        width: 1200,
+        height: 623,
       },
     ],
     locale: 'ru_RU',
     type: 'website',
+  },
+  twitter: {
+    images: {
+      url: 'https://bybaltika.by/api/og',
+      width: 1200,
+      height: 623,
+    },
   },
 }
 
