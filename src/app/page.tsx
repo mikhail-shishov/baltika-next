@@ -96,6 +96,7 @@ export default async function Home({ searchParams  }: Props) {
         </div>
       </form>
       <img src="img/sign.svg" className="sign" alt="Чрезмерное употребление..." />
+      <img src="img/sign-mob.svg" className="sign--mob" alt="Чрезмерное употребление..." />
       <Script src="js/scripts.js"></Script>
     </main>
   );
