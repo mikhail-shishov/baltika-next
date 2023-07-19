@@ -178,6 +178,10 @@ body {
     .form__button--img {
       display: block;
     }
+    .form__input {
+      color: white;
+      -webkit-text-fill-color: white;
+    }
   }
 
   &__heading {
@@ -222,7 +226,7 @@ body {
     color: #2c2c2c;
     font-weight: 500;
     opacity: 1;
-    -webkit-text-fill-color: rgba(0, 0, 0, 1);
+    -webkit-text-fill-color: #2c2c2c;
     -webkit-opacity: 1;
 
     @media (max-width: 768px) {

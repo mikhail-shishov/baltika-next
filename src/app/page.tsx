@@ -84,7 +84,7 @@ export default async function Home({ searchParams  }: Props) {
           </div>
         </div>
       </header>
-      <form action="" className="form">
+      <form action="" className="form is-loading">
         <div className="form__line">
           <div className="form__line--main">
             {/* <h1 className="form__heading">Идеи для летних встреч</h1> */}
