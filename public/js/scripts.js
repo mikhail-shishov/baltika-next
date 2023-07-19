@@ -48,6 +48,7 @@ document.querySelector('.form__button').addEventListener('click', async (e) => {
 // fadein для блока при загрузке страницы
 setTimeout(() => {
   document.querySelector('.form').classList.add('is-active');
+  loader();
   link();
 }, '1500');
 
