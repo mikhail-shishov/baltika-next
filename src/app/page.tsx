@@ -22,6 +22,8 @@ export async function generateMetadata(
       images: [
         {
           url: 'https://bybaltika.by/api/og/' + idea.id,
+          width: 1200,
+          height: 623,
         },
       ],
     },
