@@ -1,7 +1,8 @@
 // подстановка ссылок в расшаривание
 function link() {
   console.log(document.querySelectorAll('meta[property="og:image"]')[0]);
-  let text = document.querySelector('.form__input').value;
+  // let text = document.querySelector('.form__input').value;
+  let text = document.querySelector('.form__input').innerText;
   document.querySelector('.share__link--tg').href = 'https://t.me/share/url?url=' + window.location.href;
   document.querySelector('.share__link--vk').href = 'https://vk.com/share.php?url=' + window.location.href;
   document.querySelector('.share__link--twitter').href =
@@ -35,7 +36,8 @@ document.querySelector('.form__button').addEventListener('click', async (e) => {
 
   const idea = await getIdea();
 
-  document.querySelector('.form__input').value = idea.text;
+  // document.querySelector('.form__input').value = idea.text;
+  document.querySelector('.form__input').innerText = idea.text;
   document.title = idea.text;
 
   const url = new URL(window.location.href);

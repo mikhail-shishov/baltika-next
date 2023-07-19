@@ -27,6 +27,13 @@ export async function generateMetadata(
         },
       ],
     },
+    twitter: {
+      images: {
+        url: 'https://bybaltika.by/api/og/' + idea.id,
+        width: 1200,
+        height: 623,
+      },
+    },
   }
 }
 
@@ -89,7 +96,8 @@ export default async function Home({ searchParams  }: Props) {
           <div className="form__line--main">
             {/* <h1 className="form__heading">Идеи для летних встреч</h1> */}
             <img src="img/outline.png" className='form__name' alt="Идеи для летних встреч" />
-            <input type="text" className="form__input" disabled value={idea.text} />
+            {/* <input type="text" className="form__input" disabled value={idea.text} /> */}
+            <div className="form__input">{idea.text}</div>
           </div>
           <button type="submit" className="form__button">
             <span className="form__button--text">ещё</span>

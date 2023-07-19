@@ -217,7 +217,11 @@ body {
     border: 2px solid #ff2929;
     background: #fff;
     backdrop-filter: blur(29px);
-    padding: 30px 34px;
+    padding: 8px 34px;
+    min-height: 97px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 650px;
     outline: none;
     font-size: 22px;
