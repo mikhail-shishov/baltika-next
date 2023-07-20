@@ -19,6 +19,7 @@ export async function generateMetadata(
   return {
     title: idea.text,
     openGraph: {
+      title: idea.text,
       images: [
         {
           url: 'https://bybaltika.by/api/og/' + idea.id,
@@ -32,7 +33,10 @@ export async function generateMetadata(
         url: 'https://bybaltika.by/api/og/' + idea.id,
         width: 1200,
         height: 623,
+        type: 'image/png',
+        alt: idea.text
       },
+      card: 'summary_large_image',
     },
   }
 }

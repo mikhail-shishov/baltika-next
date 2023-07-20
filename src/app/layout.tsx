@@ -27,6 +27,7 @@ export const metadata: Metadata = {
       width: 1200,
       height: 623,
     },
+    card: 'summary_large_image'
   },
 }
 
