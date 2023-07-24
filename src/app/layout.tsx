@@ -1,4 +1,5 @@
 import './style.scss'
+import Script from 'next/script';
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
@@ -38,7 +39,43 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+      <Script
+      id='ya-metric'
+      strategy="afterInteractive"
+      dangerouslySetInnerHTML={{
+        __html: `
+          (function(m,e,t,r,i,k,a){m[i]=m[i]function(){(m[i].a=m[i].a[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(94364462, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+        `,
+        }}
+    />
+    <noscript><div><img src="https://mc.yandex.ru/watch/94364462" className="ya" alt="" /></div></noscript>
+    <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-FJWZSG839X"/>
+    <Script
+      id='gtag-setup'
+      strategy="afterInteractive"
+      dangerouslySetInnerHTML={{
+        __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'G-FJWZSG839X');
+        `,
+        }}
+    />
+        
+        {children}</body>
     </html>
   )
 }
