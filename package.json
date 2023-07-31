@@ -22,5 +22,8 @@
     "react-helmet": "^6.1.0",
     "sass": "^1.63.6",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "next-yandex-metrika": "^1.0.0"
   }
 }

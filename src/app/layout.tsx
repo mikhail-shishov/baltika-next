@@ -1,7 +1,8 @@
-import './style.scss'
+import './style.scss';
+import YandexMetrika from './YandexMetrika.js';
 import Script from 'next/script';
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -40,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={inter.className}>
-      <Script
+      {/* <Script
       id='ya-metric'
       strategy="afterInteractive"
       dangerouslySetInnerHTML={{
@@ -59,7 +60,16 @@ export default function RootLayout({
         `,
         }}
     />
-    <noscript><div><img src="https://mc.yandex.ru/watch/94364462" className="ya" alt="" /></div></noscript>
+    <noscript><div><img src="https://mc.yandex.ru/watch/94364462" className="ya" alt="" /></div></noscript> */}
+
+    {/* <YandexMetrika 
+      yid={94364462},
+      clickmap={true},
+      trackLinks={true},
+      accurateTrackBounce={true},
+      webvisor={false},
+    /> */}
+
     <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-FJWZSG839X"/>
     <Script
       id='gtag-setup'
